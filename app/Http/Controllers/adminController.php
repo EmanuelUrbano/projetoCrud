@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\produto1;
+use App\categoria;
 
 class adminController extends Controller
 {
     
     public function adm()
     {
-        return view('admin', ['produtos' => produto1::all()]);
+        return view('admin', ['produtos' => produto1::all(), 'categoria'=>categoria::all()]);
     }
     public function add(Request $request){
        

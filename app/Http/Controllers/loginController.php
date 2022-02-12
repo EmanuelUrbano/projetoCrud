@@ -10,6 +10,9 @@ class loginController extends Controller
     {
         return view('login');
     }
+    public function autenticar(Request $request){
+        
+    }
     public function cadastro()
     {
         return view('cadastro');
@@ -18,16 +21,5 @@ class loginController extends Controller
     {
         return redirect(route('home'));
     }
-    public function receberInformacoes(Request $request)
-    {
-        $nome = $request->input('nome');
-        $email = $request->input('email');
-        $senha = $request->input('senha');
-        $confirmarSenha = $request->input('confirmarSenha');
-        $dataNascimento = $request->input('dataNascimento');
-        $sexo = $request->input('sexo');
-
-        echo 'Nome: '.$nome.'<br>';
-
-    }
+    
 }

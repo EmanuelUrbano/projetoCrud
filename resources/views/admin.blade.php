@@ -19,6 +19,11 @@
                 <p>{{$p->description}}</p>
                 <p>R${{$p->price}}</p>
                 <p>{{$p->quantity}} em estoque</p>
+                @foreach($categoria as $c)
+                    @if($c->id == $p->category_id)
+                        <p>{{$c->name}}</p>
+                    @endif
+                @endforeach
                 <a href="{{route('update1',$p)}}">Editar</a>
                 <a href="{{route('delete1',$p)}}">Excluir</a>
             </div>

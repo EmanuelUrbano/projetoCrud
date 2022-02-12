@@ -14,8 +14,8 @@
         
         
         <input type="text" name="nomeDoProduto" placeholder="Nome do produto" >
-        <input type="number" step="0.01" name="precoDoProduto" placeholder="Preço do produto">
-        <input type="number" name="quantidadeDoProduto" placeholder="Quantidade do produto">
+        <input type="number" min="0.01" name="precoDoProduto" placeholder="Preço do produto">
+        <input type="number" min="1" name="quantidadeDoProduto" placeholder="Quantidade do produto">
         <textarea name="descricaoDoProduto" placeholder="Descrição do produto"cols="30" rows="10"></textarea>
         
         <input type="radio" id="amplificadores" name="categoriaDoProduto" value="2">
