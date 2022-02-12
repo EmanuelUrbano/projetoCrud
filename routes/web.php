@@ -10,6 +10,9 @@ Route::prefix('/logado')->group(function(){
     Route::post('/add', 'adminController@addERedirect')->name('data');
     Route::get('/delete', 'adminController@delete')->name('delete');
     Route::get('/update', 'adminController@update')->name('update');
+    Route::get('/delete/{p}', 'adminController@delete1')->name('delete1');
+    Route::post('/update', 'adminController@updateERedirect')->name('updateNRed');
+    Route::get('/update/{p}', 'adminController@update1')->name('update1');
 });
 
 Route::get('/logout', 'loginController@logout')->name('logout');

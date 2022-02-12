@@ -18,6 +18,7 @@
                     <p>R${{$p->price}}</p>
                     <p>{{$p->quantity}} em estoque</p>
                 </div>
+                <hr>
             @endforeach
     </body>
 </html>
