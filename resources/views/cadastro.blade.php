@@ -8,14 +8,11 @@
 </head>
 <body>
     cadastro
-    <form action="{{route('receberInformacoes')}}" method="post">
+    <form action="{{route('cadastrar')}}" method="post">
+        @csrf
         <input type="text" name="nome" placeholder="Nome">
         <input type="text" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Senha">
-        <input type="password" name="confirmarSenha" placeholder="Confirmar Senha">
-        <input type="date" name="dataNascimento" placeholder="Data de Nascimento">
-        <input type="radio" name="sexo" value="masculino">Masculino
-        <input type="radio" name="sexo" value="feminino">Feminino
         <input type="submit" value="Cadastrar">
     </form>
 </body>

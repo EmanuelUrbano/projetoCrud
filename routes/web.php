@@ -17,8 +17,10 @@ Route::prefix('/logado')->group(function(){
 
 Route::get('/logout', 'loginController@logout')->name('logout');
 Route::get('/login', 'loginController@login')->name('login');
+Route::post('/login', 'loginController@autenticar')->name('login');
+
 Route::get('/cadastro', 'loginController@cadastro')->name('cadastro');
-Route::post('/cadastro', 'loginController@receberInformacoes')->name('receberInformacoes');
+Route::post('/cadastro', 'loginController@cadastrar')->name('cadastrar');
 
 Route::fallback(function(){
     echo 'Essa pagina não existe <br> <a href="'.route('home').'">voltar para a pagina principal</a>';
