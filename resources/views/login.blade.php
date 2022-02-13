@@ -10,8 +10,8 @@
     Login
     <form action="{{route('login')}}" method="post">
         @csrf
-        <input type="text" value="{{old('usuario')}}" name="usuario" placeholder="user">
-        {{$errors->has('usuario')?$errors->first('usuario'):''}}
+        <input type="text" value="{{old('name')}}" name="name" placeholder="user">
+        {{$errors->has('name')?$errors->first('name'):''}}
         <input type="password" value="{{old('password')}}" name="password" placeholder="Senha">
         {{$errors->has('password')?$errors->first('password'):''}}
         <input type="submit" value="Entrar">'

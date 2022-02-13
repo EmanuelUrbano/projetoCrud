@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class loginController extends Controller
 {
@@ -14,19 +15,46 @@ class loginController extends Controller
     public function autenticar(Request $request){
         //regras para autenticar
         $rules =[
-            'usuario'=>'required',
+            'name'=>'required',
             'password'=>'required'
         ];
         //mensagem de erro
         $feedback=[
-            'usuario.required' =>'hei parceiro ta esquecendo seu nome',
+            'name.required' =>'hei parceiro ta esquecendo seu nome',
             'password.required'=>'sem password não passara!!'
         ];
 
         //validar se ta certo
 
-        $request->validate($rules,$feedback);
+        $credent = $request->validate($rules,$feedback);
+
+
+        //tentar autenticar com essas credenciais validas se estiver no banco retornar true,
+        // e reiniciara a sessão do usuario para que não haja vunerabilidade de session fixation
+        //(vunerabildade que utilizada o identificador de sesssão de outra pessoa)
+        //        |
+        //        V
+
+        //if(Auth::attempt($credent)){
+        //    $request->session()->regenerate();
+        //    
+        //    return redirect(route('admin'));
+        //}
+
+        $name= $request->get('name');
+        $password= $request->get('password');
         
+        $usuario = new User();
+        $existe = $usuario->where('name',$name)->where('password',$password)->get()->first();
+        
+        if (isset($existe->name)) {
+            return redirect(route('admin'));
+        }
+
+        return back()->withErrors([
+            'name'=>'não acho'
+        ]);
+
     }
     public function cadastro()
     {
@@ -36,7 +64,7 @@ class loginController extends Controller
     {
         $rules=[
             'nome'=>'required',
-            'email'=>'email',
+            'email'=>['required','email'],
             'password'=>'required'
         ];
         $feedback=[
