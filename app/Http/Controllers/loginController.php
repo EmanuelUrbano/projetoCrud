@@ -48,7 +48,11 @@ class loginController extends Controller
         $existe = $usuario->where('name',$name)->where('password',$password)->get()->first();
         
         if (isset($existe->name)) {
-            return redirect(route('admin'));
+            session_start();
+            $_SESSION['name']=$existe->name;
+            $_SESSION['email']=$existe->email;
+
+            return redirect()->route('admin');
         }
 
         return back()->withErrors([

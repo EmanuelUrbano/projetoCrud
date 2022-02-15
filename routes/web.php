@@ -1,10 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Middleware\admMiddleware;
+use \App\Http\Middleware\authen;
 
 Route::get('/', 'start@start')->name('home');
 
-Route::prefix('/logado')->group(function(){
+
+
+Route::middleware(admMiddleware::class)->middleware(authen::class)->prefix('/logado')->group(function(){
     Route::get('/admin', 'adminController@adm')->name('admin');
     Route::get('/add', 'adminController@add')->name('add');
     Route::post('/add', 'adminController@addERedirect')->name('data');

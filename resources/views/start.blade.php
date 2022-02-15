@@ -17,6 +17,11 @@
                     <p>{{$p->description}}</p>
                     <p>R${{$p->price}}</p>
                     <p>{{$p->quantity}} em estoque</p>
+                    @foreach($categoria as $c)
+                        @if($c->id == $p->category_id)
+                            <p>{{$c->name}}</p>
+                        @endif
+                    @endforeach
                 </div>
                 <hr>
             @endforeach
