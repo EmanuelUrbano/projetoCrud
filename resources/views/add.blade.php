@@ -16,6 +16,8 @@
         <input type="number" name="quantidadeDoProduto" placeholder="Quantidade do produto">
         <textarea name="descricaoDoProduto" placeholder="Descrição do produto"cols="30" rows="10"></textarea>
         
+        <input type="file" name="imagemDoProduto">
+
         <input type="radio" id="amplificadores" name="categoriaDoProduto" value="2">
         <label for="amplificadores">Amplificadores</label>
         <input type="radio" id="pedaisEPedaleiras" name="categoriaDoProduto" value="3">
