@@ -17,9 +17,8 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('produtos_id');
             $table->string('name', 50);
-            $table->string('size', 10);
-            $table->string('alt', 50);
-            $table->string('description', 50);
+
+     
             $table->string('url', 50);
             $table->timestamps();
             

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\produto1;
 use App\categoria;
+use App\image;
 
 class adminController extends Controller
 {
@@ -18,13 +20,24 @@ class adminController extends Controller
         return view('add');
     }
     public function addERedirect(Request $request){
+
+        
+        
         $produto = new produto1();
+        
         $produto->name = $request->input('nomeDoProduto');
         $produto->description = $request->input('descricaoDoProduto');
         $produto->price = $request->input('precoDoProduto');
         $produto->category_id = $request->input('categoriaDoProduto');
         $produto->quantity = $request->input('quantidadeDoProduto');
         $produto->save();
+
+        $imagemDoProduto=new image();
+
+        $imagemDoProduto->produtos_id=$produto->id;
+        $imagemDoProduto->name='s';
+        $imagemDoProduto->url='s';
+        $imagemDoProduto->save();
         return redirect(route('admin'));
         
     }
