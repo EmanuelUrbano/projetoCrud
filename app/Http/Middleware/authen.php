@@ -17,7 +17,7 @@ class authen
     {
         session_start();
         if (isset($_SESSION['name'] )&& $_SESSION['name'] !='' ) {
-            return Response($_SESSION);
+            return  $next($request);
         }else{
            return redirect()->route('login');
         }

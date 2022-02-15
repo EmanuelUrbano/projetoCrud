@@ -49,6 +49,7 @@ class loginController extends Controller
         
         if (isset($existe->name)) {
             session_start();
+            
             $_SESSION['name']=$existe->name;
             $_SESSION['email']=$existe->email;
 
@@ -86,7 +87,9 @@ class loginController extends Controller
     }
     public function logout()
     {
-        return redirect(route('home'));
+        session_start();
+        session_destroy();
+        return redirect()->route('home');
     }
     
 }
