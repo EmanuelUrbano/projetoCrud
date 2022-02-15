@@ -7,7 +7,7 @@ use \App\Http\Middleware\authen;
 Route::get('/', 'start@start')->name('home');
 
 
-\\rotas privadas
+
 Route::middleware(admMiddleware::class)->middleware(authen::class)->prefix('/logado')->group(function(){
     Route::get('/admin', 'adminController@adm')->name('admin');
     Route::get('/add', 'adminController@add')->name('add');
@@ -18,7 +18,7 @@ Route::middleware(admMiddleware::class)->middleware(authen::class)->prefix('/log
     Route::post('/update', 'adminController@updateERedirect')->name('updateNRed');
     Route::get('/update/{p}', 'adminController@update1')->name('update1');
 });
-\\visitantes
+
 Route::get('/logout', 'loginController@logout')->name('logout');
 Route::get('/login', 'loginController@login')->name('login');
 Route::post('/login', 'loginController@autenticar')->name('login');

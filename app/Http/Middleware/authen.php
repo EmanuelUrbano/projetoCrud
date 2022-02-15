@@ -19,7 +19,7 @@ class authen
         if (isset($_SESSION['name'] )&& $_SESSION['name'] !='' ) {
             return  $next($request);
         }else{
-           return redirect()->route('login');
+           return Response('epa rapaz ta tentando entrar sem login (≖_≖ ) <br> <a href="'.route('login').'">Fazer login</a>');
         }
     }
 }
