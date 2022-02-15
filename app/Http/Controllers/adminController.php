@@ -8,12 +8,13 @@ use App\produto1;
 use App\categoria;
 use App\image;
 
+
 class adminController extends Controller
 {
     
     public function adm()
     {
-        return view('admin', ['produtos' => produto1::all(), 'categoria'=>categoria::all()]);
+        return view('admin', ['produtos' => produto1::all(), 'categoria'=>categoria::all(),'image'=> image::all()]);
     }
     public function add(Request $request){
        
@@ -33,12 +34,17 @@ class adminController extends Controller
         $produto->save();
 
         $imagemDoProduto=new image();
+        
+        $image=$request->file('imagemDoProduto');
+        $imageName = $request->file('imagemDoProduto')->getClientOriginalName();
+        $path= $image->store('products',  'public');
+        $path1= '/storage/app/'.$path;
 
         $imagemDoProduto->produtos_id=$produto->id;
-        $imagemDoProduto->name='s';
-        $imagemDoProduto->url='s';
+        $imagemDoProduto->name=$imageName;
+        $imagemDoProduto->url=$path;
         $imagemDoProduto->save();
-        return redirect(route('admin'));
+        return redirect()->route('admin');
         
     }
     public function delete(){

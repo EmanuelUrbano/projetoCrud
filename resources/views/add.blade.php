@@ -9,7 +9,7 @@
 <body>
     <h1>Add</h1>
     <!-- Vai ter um formulario que vai enviar os dados para a tabela -->
-    <form action="{{route('data')}}" method="post">
+    <form action="{{route('data')}}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="text" name="nomeDoProduto" placeholder="Nome do produto" >
         <input type="number" step="0.01" name="precoDoProduto" placeholder="Preço do produto">

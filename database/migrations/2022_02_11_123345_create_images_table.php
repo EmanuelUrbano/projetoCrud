@@ -19,7 +19,7 @@ class CreateImagesTable extends Migration
             $table->string('name', 50);
 
      
-            $table->string('url', 50);
+            $table->string('url');
             $table->timestamps();
             
 

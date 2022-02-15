@@ -13,9 +13,16 @@
     <!-- vitrine -->
     
     <div class="vitrine">
+        
+        
         @foreach($produtos as $p)
             <div class="produto">
                 <h2>{{$p->name}}</h2>
+                @foreach($image as $i)   
+                    @if($i->produtos_id == $p->id)
+                       <img src="{{asset($i->url)}}">
+                    @endif
+                @endforeach
                 <p>{{$p->description}}</p>
                 <p>R${{$p->price}}</p>
                 <p>{{$p->quantity}} em estoque</p>
@@ -27,8 +34,10 @@
                 <a href="{{route('update1',$p)}}">Editar</a>
                 <a href="{{route('delete1',$p)}}">Excluir</a>
             </div>
+    
             <hr>
         @endforeach
+        
     </div>    
 </body>
 </html>
