@@ -59,6 +59,7 @@ class adminController extends Controller
 
     public function update1(int $p){
         $produt = produto1::find($p);
+     
         return view('update1', ['p'=>$produt]);
     }
 
@@ -73,7 +74,37 @@ class adminController extends Controller
         $produto->category_id = $request->input('categoriaDoProduto');
         $produto->quantity = $request->input('quantidadeDoProduto');
         $produto->save();
-        return redirect(route('admin'));
+
+        $imagemDoProdutoVelha=image::where('produtos_id',$request->input('idDoProduto'));
+        
+        if($request->input('ftAntiga?')=='1'){
+            return redirect(route('admin'));
+        }else {
+            //$imagemDoProduto=new image();
+        
+            $image=$request->file('imagemDoProduto');
+            //$imageName = $image->getClientOriginalName();
+            //$path= $image->store('products',  'public');
+            //$path1= '/storage/'.$path;
+    
+            //$imagemDoProduto->produtos_id=$produto->id;
+            //$imagemDoProduto->name=$imageName;
+            //$imagemDoProduto->url=$path1;
+            //$imagemDoProduto->save();
+            //return redirect()->route('admin');
+            return dd($image);
+        }
+        //$image=$request->file('imagemDoProduto');
+        //$imageName = $request->file('imagemDoProduto')->getClientOriginalName();
+        //$path= $image->store('products',  'public');
+        //$path1= '/storage/'.$path;
+
+        //$imagemDoProduto->produtos_id=$produto->id;
+        //$imagemDoProduto->name=$imageName;
+        //$imagemDoProduto->url=$path1;
+        //$imagemDoProduto->save();
+        //return redirect(route('admin'));
+        //return dd($imagemDoProduto);
     }
 
 }
