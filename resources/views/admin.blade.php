@@ -20,7 +20,7 @@
                 <h2>{{$p->name}}</h2>
                 @foreach($image as $i)   
                     @if($i->produtos_id == $p->id)
-                       <img src="{{asset($i->url)}}">
+                       <img src="{{$i->url}}">
                     @endif
                 @endforeach
                 <p>{{$p->description}}</p>

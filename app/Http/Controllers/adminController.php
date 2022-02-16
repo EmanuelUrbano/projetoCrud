@@ -38,11 +38,11 @@ class adminController extends Controller
         $image=$request->file('imagemDoProduto');
         $imageName = $request->file('imagemDoProduto')->getClientOriginalName();
         $path= $image->store('products',  'public');
-        $path1= '/storage/app/'.$path;
+        $path1= '/storage/'.$path;
 
         $imagemDoProduto->produtos_id=$produto->id;
         $imagemDoProduto->name=$imageName;
-        $imagemDoProduto->url=$path;
+        $imagemDoProduto->url=$path1;
         $imagemDoProduto->save();
         return redirect()->route('admin');
         
