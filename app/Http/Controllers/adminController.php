@@ -53,7 +53,7 @@ class adminController extends Controller
 
     public function delete1(int $p){
         $imagemDoProdutoVelha=image::where('produtos_id',$p)->first();
-        Storage::delete($imagemDoProdutoVelha->get('url'));
+        Storage::disk('public')->delete($imagemDoProdutoVelha->get('url'));
         $imagemDoProdutoVelha->delete();
 
         $produto = produto1::find($p);
@@ -85,7 +85,7 @@ class adminController extends Controller
             return redirect(route('admin'));
         }
         else {
-            Storage::delete($imagemDoProdutoVelha->get('url'));
+            Storage::disk('public')->delete($imagemDoProdutoVelha->get('url'));
             $imagemDoProdutoVelha->delete();
 
             $imagemDoProduto=new image();

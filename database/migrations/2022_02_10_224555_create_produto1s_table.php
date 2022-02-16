@@ -16,7 +16,7 @@ class CreateProduto1sTable extends Migration
         Schema::create('produto1s', function (Blueprint $table) {
             $table->id();
             $table->string('name',50);
-            $table->text('description',500) -> nullable();
+            $table->text('description') -> nullable();
             $table->float('price')->default(0.01);
             $table->unsignedBigInteger('category_id')->default(1);
             $table->integer('quantity')->default(1);
