@@ -100,7 +100,6 @@ class adminController extends Controller
             $imagemDoProduto->url=$path1;
             $imagemDoProduto->save();
             return redirect()->route('admin');
-            return dd($image);
         }
     }
 
