@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Update</h1>
-    <form action="{{route('updateNRed')}}" method="post">
+    <form action="{{route('updateNRed')}}" method="post" enctype="multipart/form-data">>
         @csrf
 
         
@@ -18,7 +18,7 @@
         <input type="number" name="quantidadeDoProduto" placeholder="Quantidade do produto"  value="{{$p->quantity}}">
         <textarea name="descricaoDoProduto" placeholder="Descrição do produto"cols="30" rows="10"  >{{$p->description}}</textarea>
         
-        <input type="file" name="imagemDoProduto" >
+        <input type="file" name="imagemDoProduto">
         <input type="checkbox" id="ftAntiga?" value="1" name="ftAntiga?">
         <label for="ftAntiga?">Usar foto antiga</label>
 

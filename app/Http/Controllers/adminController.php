@@ -52,6 +52,10 @@ class adminController extends Controller
     }
 
     public function delete1(int $p){
+        $imagemDoProdutoVelha=image::where('produtos_id',$p)->first();
+        Storage::delete($imagemDoProdutoVelha->get('url'));
+        $imagemDoProdutoVelha->delete();
+
         $produto = produto1::find($p);
         $produto->delete();
         return redirect(route('admin'));
@@ -75,36 +79,29 @@ class adminController extends Controller
         $produto->quantity = $request->input('quantidadeDoProduto');
         $produto->save();
 
-        $imagemDoProdutoVelha=image::where('produtos_id',$request->input('idDoProduto'));
+        $imagemDoProdutoVelha=image::where('produtos_id',$request->input('idDoProduto'))->first();
         
         if($request->input('ftAntiga?')=='1'){
             return redirect(route('admin'));
-        }else {
-            //$imagemDoProduto=new image();
+        }
+        else {
+            Storage::delete($imagemDoProdutoVelha->get('url'));
+            $imagemDoProdutoVelha->delete();
+
+            $imagemDoProduto=new image();
         
             $image=$request->file('imagemDoProduto');
-            //$imageName = $image->getClientOriginalName();
-            //$path= $image->store('products',  'public');
-            //$path1= '/storage/'.$path;
+            $imageName = $request->file('imagemDoProduto')->getClientOriginalName();
+            $path= $image->store('products',  'public');
+            $path1= '/storage/'.$path;
     
-            //$imagemDoProduto->produtos_id=$produto->id;
-            //$imagemDoProduto->name=$imageName;
-            //$imagemDoProduto->url=$path1;
-            //$imagemDoProduto->save();
-            //return redirect()->route('admin');
+            $imagemDoProduto->produtos_id=$produto->id;
+            $imagemDoProduto->name=$imageName;
+            $imagemDoProduto->url=$path1;
+            $imagemDoProduto->save();
+            return redirect()->route('admin');
             return dd($image);
         }
-        //$image=$request->file('imagemDoProduto');
-        //$imageName = $request->file('imagemDoProduto')->getClientOriginalName();
-        //$path= $image->store('products',  'public');
-        //$path1= '/storage/'.$path;
-
-        //$imagemDoProduto->produtos_id=$produto->id;
-        //$imagemDoProduto->name=$imageName;
-        //$imagemDoProduto->url=$path1;
-        //$imagemDoProduto->save();
-        //return redirect(route('admin'));
-        //return dd($imagemDoProduto);
     }
 
 }
