@@ -26,6 +26,7 @@
             height:30vh;
         }
         .vitrine{
+            justify-content: center;
             display: flex;
             flex-wrap: wrap;
             gap: 1vw;
@@ -54,6 +55,13 @@
             text-decoration: none;
             padding: 1vh 0.5vw;
         }
+        @media screen and (max-width: 480px) {
+            
+            .produto{
+                width: 70vw;
+            }        
+        }
+        
     </style>
 </head>
 <body>
